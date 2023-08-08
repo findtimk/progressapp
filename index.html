@@ -10,6 +10,8 @@
             font-family: Arial, sans-serif;
             padding: 20px;
             background-color: #f7f7f7;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
         /* Life Calendar styles */
@@ -19,6 +21,8 @@
             gap: 2px;
             max-width: 100%;
             margin: 20px 0;
+            overflow: hidden;
+            height: 70vh; /* Making sure the calendar fits within the viewport */
         }
         
         .week {
@@ -34,6 +38,10 @@
 
         /* Mobile specific styles */
         @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+
             .life-calendar {
                 gap: 1px;
             }
