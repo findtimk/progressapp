@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
         /* Life Calendar styles */
         .life-calendar {
             display: grid;
-            grid-template-columns: repeat(52, 1.85vw); /* 52 weeks, each box having a width of 1.85% of the viewport width */
+            grid-template-columns: repeat(52, 1.85vw); /* 52 weeks */
             gap: 1px;
             max-width: 100%;
             margin: 20px 0;
@@ -25,13 +26,45 @@
         
         .week {
             width: 100%;
-            height: 1.85vw; /* Setting the height to match the width for square boxes */
+            height: 1.85vw; /* Ensure square boxes */
             border: 1px solid #e0e0e0;
             background-color: #ffffff; /* Future time */
         }
 
-        .passed {
-            background-color: #4caf50; /* Passed time */
+        .childhood {
+            background-color: #FFC0CB; /* Childhood (0-12 years old) */
+        }
+
+        .teenage {
+            background-color: #87CEEB; /* Teenage (13-19 years old) */
+        }
+
+        .early-adulthood {
+            background-color: #32CD32; /* Early Adulthood (20-30 years old) */
+        }
+
+        .late-stage {
+            background-color: #FFD700; /* Late Stage (80-90 years old) */
+        }
+
+        /* Legend styles */
+        .legend {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -43,6 +76,22 @@
     </div>
     <div id="life-label" style="font-weight: bold; margin-top: 20px;">Life Calendar (90 Years)</div>
     <div class="life-calendar" id="life-calendar"></div>
+
+    <!-- Legend -->
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-box childhood"></div>Childhood (0-12)
+        </div>
+        <div class="legend-item">
+            <div class="legend-box teenage"></div>Teenage (13-19)
+        </div>
+        <div class="legend-item">
+            <div class="legend-box early-adulthood"></div>Early Adulthood (20-30)
+        </div>
+        <div class="legend-item">
+            <div class="legend-box late-stage"></div>Late Stage (80-90)
+        </div>
+    </div>
 
     <script>
         function yearProgress() {
@@ -85,7 +134,15 @@
                 weekElem.className = 'week';
                 const weeksIntoLife = (i * weeksInYear) + j;
                 if (weeksIntoLife <= weeksPassed) {
-                    weekElem.classList.add('passed');
+                    if (i < 13) {
+                        weekElem.classList.add('childhood');
+                    } else if (i < 20) {
+                        weekElem.classList.add('teenage');
+                    } else if (i < 31) {
+                        weekElem.classList.add('early-adulthood');
+                    } else if (i >= 80) {
+                        weekElem.classList.add('late-stage');
+                    }
                 }
                 lifeCalendarElem.appendChild(weekElem);
             }
