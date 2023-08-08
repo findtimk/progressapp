@@ -9,6 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
+            background-color: #f7f7f7;
         }
 
         /* Life Calendar styles */
@@ -20,14 +21,11 @@
             margin: 20px 0;
         }
         
-        .year {
-            margin-bottom: 4px;
-        }
-
         .week {
             width: 100%;
             aspect-ratio: 1; /* Make each box square-shaped */
-            background-color: #e0e0e0; /* Unpassed time */
+            border: 1px solid #e0e0e0;
+            background-color: #ffffff; /* Future time */
         }
 
         .passed {
@@ -91,8 +89,6 @@
         const lifeCalendarElem = document.getElementById("life-calendar");
         
         for (let i = 0; i < totalYears; i++) {
-            const yearElem = document.createElement('div');
-            yearElem.className = 'year';
             for (let j = 1; j <= weeksInYear; j++) {
                 const weekElem = document.createElement('div');
                 weekElem.className = 'week';
@@ -100,9 +96,8 @@
                 if (weeksIntoLife <= weeksPassed) {
                     weekElem.classList.add('passed');
                 }
-                yearElem.appendChild(weekElem);
+                lifeCalendarElem.appendChild(weekElem);
             }
-            lifeCalendarElem.appendChild(yearElem);
         }
     </script>
 </body>
