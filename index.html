@@ -4,15 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Year and Life Progress</title>
+    <title>ChronoChronicles</title>
     <style>
         /* Main styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
-            background-color: #f7f7f7;
+            background-color: #f3f4f6;
+            color: #333;
+            text-align: center;
             max-width: 100vw;
             overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #777;
         }
 
         /* Life Calendar styles */
@@ -73,9 +87,11 @@
     </style>
 </head>
 <body>
+    <h1>ChronoChronicles</h1>
+    <h2>Week by Week, Peek into Your Life's Streak!</h2>
     <div id="date"></div>
     <div id="label"></div>
-    <div id="progress-bar" style="width: 100%; height: 25px; background-color: #e0e0e0; margin: 20px 0;">
+    <div id="progress-bar" style="width: 90%; height: 30px; background-color: #e0e0e0; margin: 20px auto;">
         <div id="progress-bar-fill" style="height: 100%; width: 0%;"></div>
     </div>
     <div id="life-label" style="font-weight: bold; margin-top: 20px;">Life Calendar (90 Years)</div>
