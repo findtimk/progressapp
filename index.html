@@ -17,7 +17,7 @@
         /* Life Calendar styles */
         .life-calendar {
             display: grid;
-            grid-template-columns: repeat(52, calc(100% / 52)); /* 52 weeks */
+            grid-template-columns: repeat(52, 1.85vw); /* 52 weeks, each box having a width of 1.85% of the viewport width */
             gap: 1px;
             max-width: 100%;
             margin: 20px 0;
@@ -25,25 +25,13 @@
         
         .week {
             width: 100%;
-            padding-bottom: 1.92%; /* Aspect ratio to ensure square boxes */
+            height: 1.85vw; /* Setting the height to match the width for square boxes */
             border: 1px solid #e0e0e0;
             background-color: #ffffff; /* Future time */
-            box-sizing: border-box;
         }
 
         .passed {
             background-color: #4caf50; /* Passed time */
-        }
-
-        /* Mobile specific styles */
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 10px;
-            }
-
-            .week {
-                border-radius: 2px;
-            }
         }
     </style>
 </head>
