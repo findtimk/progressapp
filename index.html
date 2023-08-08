@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,18 +19,17 @@
         .life-calendar {
             display: grid;
             grid-template-columns: repeat(52, 1fr); /* 52 weeks */
-            gap: 2px;
+            gap: 1px;
             max-width: 100%;
             margin: 20px 0;
-            overflow: hidden;
-            height: 70vh; /* Making sure the calendar fits within the viewport */
         }
         
         .week {
             width: 100%;
-            aspect-ratio: 1; /* Make each box square-shaped */
+            padding-bottom: 1.92%; /* Aspect ratio to ensure square boxes */
             border: 1px solid #e0e0e0;
             background-color: #ffffff; /* Future time */
+            box-sizing: border-box;
         }
 
         .passed {
@@ -40,10 +40,6 @@
         @media (max-width: 600px) {
             body {
                 padding: 20px 10px;
-            }
-
-            .life-calendar {
-                gap: 1px;
             }
 
             .week {
