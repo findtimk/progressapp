@@ -31,6 +31,10 @@
             background-color: #ffffff; /* Future time */
         }
 
+        .passed {
+            background-color: #4CAF50; /* General passed time */
+        }
+
         .childhood {
             background-color: #FFC0CB; /* Childhood (0-12 years old) */
         }
@@ -40,7 +44,7 @@
         }
 
         .early-adulthood {
-            background-color: #32CD32; /* Early Adulthood (20-30 years old) */
+            background-color: #20B2AA; /* Early Adulthood (20-30 years old) - changed to LightSeaGreen */
         }
 
         .late-stage {
@@ -142,6 +146,8 @@
                         weekElem.classList.add('early-adulthood');
                     } else if (i >= 80) {
                         weekElem.classList.add('late-stage');
+                    } else {
+                        weekElem.classList.add('passed'); // General passed time
                     }
                 }
                 lifeCalendarElem.appendChild(weekElem);
