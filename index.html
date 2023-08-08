@@ -1,49 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Year Progress</title>
+    <title>Year and Life Progress</title>
     <style>
+        /* Main styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            text-align: center;
-            padding: 50px 0;
+            padding: 20px;
         }
-        #progress-bar {
-            width: 300px;
-            height: 25px;
-            background-color: #e0e0e0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
+
+        /* Life Calendar styles */
+        .life-calendar {
+            display: grid;
+            grid-template-columns: repeat(52, 1fr); /* 52 weeks */
+            gap: 2px;
+            max-width: 100%;
+            margin: 20px 0;
         }
-        #progress-bar-fill {
-            height: 100%;
-            width: 0%;  /* Initial width is 0% */
-            transition: width 0.4s ease-out;
+        
+        .year {
+            margin-bottom: 4px;
         }
-        #label {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
+
+        .week {
+            width: 100%;
+            aspect-ratio: 1; /* Make each box square-shaped */
+            background-color: #e0e0e0; /* Unpassed time */
         }
-        #date {
-            font-size: 18px;
-            color: #777;
-            margin-bottom: 20px;
+
+        .passed {
+            background-color: #4caf50; /* Passed time */
+        }
+
+        /* Mobile specific styles */
+        @media (max-width: 600px) {
+            .life-calendar {
+                gap: 1px;
+            }
+
+            .week {
+                border-radius: 2px;
+            }
         }
     </style>
 </head>
 <body>
     <div id="date"></div>
     <div id="label"></div>
-    <div id="progress-bar">
-        <div id="progress-bar-fill"></div>
+    <div id="progress-bar" style="width: 100%; height: 25px; background-color: #e0e0e0; margin: 20px 0;">
+        <div id="progress-bar-fill" style="height: 100%; width: 0%;"></div>
     </div>
+    <div id="life-label" style="font-weight: bold; margin-top: 20px;">Life Calendar (90 Years)</div>
+    <div class="life-calendar" id="life-calendar"></div>
+
     <script>
         function yearProgress() {
             const today = new Date();
@@ -70,6 +81,29 @@
         }
         document.getElementById("progress-bar-fill").style.backgroundColor = color;
         document.getElementById("progress-bar-fill").style.width = `${progress}%`;
+
+        // Life Calendar
+        const birthDate = new Date(1980, 3, 1); // April 1, 1980
+        const weeksInYear = 52;
+        const totalYears = 90;
+        const weeksPassed = Math.floor((today - birthDate) / (7 * 24 * 60 * 60 * 1000)); // milliseconds to weeks
+        
+        const lifeCalendarElem = document.getElementById("life-calendar");
+        
+        for (let i = 0; i < totalYears; i++) {
+            const yearElem = document.createElement('div');
+            yearElem.className = 'year';
+            for (let j = 1; j <= weeksInYear; j++) {
+                const weekElem = document.createElement('div');
+                weekElem.className = 'week';
+                const weeksIntoLife = (i * weeksInYear) + j;
+                if (weeksIntoLife <= weeksPassed) {
+                    weekElem.classList.add('passed');
+                }
+                yearElem.appendChild(weekElem);
+            }
+            lifeCalendarElem.appendChild(yearElem);
+        }
     </script>
 </body>
 </html>
