@@ -1,11 +1,12 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChronoChronicles</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChronoChronicles</title>
+<style>
         /* Main styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -87,33 +88,31 @@
     </style>
 </head>
 <body>
-    <h1>ChronoChronicles</h1>
-    <h2>Week by Week, Peek into Your Life's Streak!</h2>
-    <div id="date"></div>
-    <div id="label"></div>
-    <div id="progress-bar" style="width: 90%; height: 30px; background-color: #e0e0e0; margin: 20px auto;">
-        <div id="progress-bar-fill" style="height: 100%; width: 0%;"></div>
-    </div>
-    <div id="life-label" style="font-weight: bold; margin-top: 20px;">Life Calendar (90 Years)</div>
-    <div class="life-calendar" id="life-calendar"></div>
-
-    <!-- Legend -->
-    <div class="legend">
-        <div class="legend-item">
-            <div class="legend-box childhood"></div>Childhood (0-12)
+<h1>ChronoChronicles</h1>
+<h2>Week by Week, Peek into Your Life's Streak!</h2>
+<div id="date"></div>
+<div id="label"></div>
+<div id="progress-bar" style="width: 90%; height: 30px; background-color: #e0e0e0; margin: 20px auto;">
+<div id="progress-bar-fill" style="height: 100%; width: 0%;"></div>
+</div>
+<div id="life-label" style="font-weight: bold; margin-top: 20px;">Life Calendar (90 Years)</div>
+<div class="life-calendar" id="life-calendar"></div>
+<!-- Legend -->
+<div class="legend">
+<div class="legend-item">
+<div class="legend-box childhood"></div>Childhood (0-12)
         </div>
-        <div class="legend-item">
-            <div class="legend-box teenage"></div>Teenage (13-19)
+<div class="legend-item">
+<div class="legend-box teenage"></div>Teenage (13-19)
         </div>
-        <div class="legend-item">
-            <div class="legend-box early-adulthood"></div>Early Adulthood (20-30)
+<div class="legend-item">
+<div class="legend-box early-adulthood"></div>Early Adulthood (20-30)
         </div>
-        <div class="legend-item">
-            <div class="legend-box late-stage"></div>Late Stage (80-90)
+<div class="legend-item">
+<div class="legend-box late-stage"></div>Late Stage (80-90)
         </div>
-    </div>
-
-    <script>
+</div>
+<script>
         function yearProgress() {
             const today = new Date();
             const startOfYear = new Date(today.getFullYear(), 0, 1);
@@ -170,6 +169,50 @@
             }
         }
     </script>
-</body>
-</html>
+<input id="birthdate-input" name="birthdate" type="date"></input><button id="regenerate-button">Regenerate Life Calendar</button><script>
+function generateLifeCalendar() {
+    const birthDateInput = document.getElementById("birthdate-input");
+    let birthDate;
+    if (birthDateInput.value) {
+        const parts = birthDateInput.value.split('-');
+        birthDate = new Date(parts[0], parts[1] - 1, parts[2]);
+    } else {
+        birthDate = new Date(1980, 3, 1); // Default to April 1, 1980
+    }
 
+    const weeksInYear = 52;
+    const totalYears = 90;
+    const today = new Date();
+    const weeksPassed = Math.floor((today - birthDate) / (7 * 24 * 60 * 60 * 1000)); // milliseconds to weeks
+
+    const lifeCalendarElem = document.getElementById("life-calendar");
+    // Clear the existing life calendar
+    lifeCalendarElem.innerHTML = '';
+
+    for (let i = 0; i < totalYears; i++) {
+        for (let j = 1; j <= weeksInYear; j++) {
+            const weekElem = document.createElement('div');
+            weekElem.className = 'week';
+            const weeksIntoLife = (i * weeksInYear) + j;
+            if (weeksIntoLife <= weeksPassed) {
+                if (i < 13) {
+                    weekElem.classList.add('childhood');
+                } else if (i < 20) {
+                    weekElem.classList.add('teenage');
+                } else if (i < 31) {
+                    weekElem.classList.add('early-adulthood');
+                } else if (i >= 80) {
+                    weekElem.classList.add('late-stage');
+                } else {
+                    weekElem.classList.add('passed'); // General passed time
+                }
+            }
+            lifeCalendarElem.appendChild(weekElem);
+        }
+    }
+}
+
+// Attach the regenerate function to the button
+document.getElementById("regenerate-button").addEventListener("click", generateLifeCalendar);
+</script></body>
+</html>
