@@ -88,14 +88,14 @@
     </style>
 </head>
 <body>
-<h1>ChronoChronicles</h1>
-<h2>Week by Week, Peek into Your Life's Streak!</h2>
+<h1>LifeTicker</h1>
+<h2>Life's a Timeline, Make Every Week Shine</h2>
 <div id="date"></div>
 <div id="label"></div>
 <div id="progress-bar" style="width: 90%; height: 20px; background-color: #e0e0e0; margin: 10px auto;">
 <div id="progress-bar-fill" style="height: 100%; width: 0%;"></div>
 </div>
-<div id="life-label" style="font-weight: bold; margin-top: 10px;">Life Calendar (90 Years)</div>
+<div id="life-label" style="font-weight: bold; margin-top: 10px;">Life Calendar (80 Years)</div>
 <div class="life-calendar" id="life-calendar"></div>
 <!-- Legend -->
 <div class="legend">
@@ -142,7 +142,7 @@
         // Life Calendar
         const birthDate = new Date(1980, 3, 1); // April 1, 1980
         const weeksInYear = 52;
-        const totalYears = 90;
+        const totalYears = 80;
         const weeksPassed = Math.floor((today - birthDate) / (7 * 24 * 60 * 60 * 1000)); // milliseconds to weeks
         
         const lifeCalendarElem = document.getElementById("life-calendar");
@@ -181,7 +181,7 @@ function generateLifeCalendar() {
     }
 
     const weeksInYear = 52;
-    const totalYears = 90;
+    const totalYears = 80;
     const today = new Date();
     const weeksPassed = Math.floor((today - birthDate) / (7 * 24 * 60 * 60 * 1000)); // milliseconds to weeks
 
