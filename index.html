@@ -10,7 +10,7 @@
         /* Main styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
+            padding: 10px 20px;
             background-color: #f3f4f6;
             color: #333;
             text-align: center;
@@ -19,12 +19,12 @@
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 10px;
         }
 
         h2 {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-bottom: 30px;
             font-style: italic;
             color: #777;
@@ -35,13 +35,13 @@
             display: grid;
             grid-template-columns: repeat(52, 1.85vw); /* 52 weeks */
             gap: 1px;
-            max-width: 100%;
-            margin: 20px 0;
-        }
+            max-width: 80%;
+            margin: 10px 0;
+        transform: scale(0.6);transform: scale(0.7);}
         
         .week {
             width: 100%;
-            height: 1.85vw; /* Ensure square boxes */
+            height: 0.5vh; /* Ensure square boxes */
             border: 1px solid #e0e0e0;
             background-color: #ffffff; /* Future time */
         }
@@ -92,10 +92,10 @@
 <h2>Week by Week, Peek into Your Life's Streak!</h2>
 <div id="date"></div>
 <div id="label"></div>
-<div id="progress-bar" style="width: 90%; height: 30px; background-color: #e0e0e0; margin: 20px auto;">
+<div id="progress-bar" style="width: 90%; height: 20px; background-color: #e0e0e0; margin: 10px auto;">
 <div id="progress-bar-fill" style="height: 100%; width: 0%;"></div>
 </div>
-<div id="life-label" style="font-weight: bold; margin-top: 20px;">Life Calendar (90 Years)</div>
+<div id="life-label" style="font-weight: bold; margin-top: 10px;">Life Calendar (90 Years)</div>
 <div class="life-calendar" id="life-calendar"></div>
 <!-- Legend -->
 <div class="legend">
